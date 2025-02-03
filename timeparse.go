@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func timeStringToSeconds(startTimeString, endTimeString string) (startTimeSeconds, endTimeSeconds string, err error) {
+func timeStringToSeconds(startTimeString, endTimeString string) (startTimeSecondsStr, durationSecondsStr string, err error) {
 	// 時間パース
 	var startTimeParts []int
 	var endTimeParts []int
@@ -24,7 +24,7 @@ func timeStringToSeconds(startTimeString, endTimeString string) (startTimeSecond
 		return
 	}
 
-	startTimeSeconds = strconv.Itoa(startTimeParts[0]*60*60 + startTimeParts[1]*60 + startTimeParts[2])
+	startTimeSeconds := startTimeParts[0]*60*60 + startTimeParts[1]*60 + startTimeParts[2]
 
 	// 終了時間
 	if isColonTime(endTimeString) {
@@ -37,9 +37,10 @@ func timeStringToSeconds(startTimeString, endTimeString string) (startTimeSecond
 		return
 	}
 
-	endTimeSeconds = strconv.Itoa(endTimeParts[0]*60*60 + endTimeParts[1]*60 + endTimeParts[2])
+	endTimeSeconds := (endTimeParts[0]*60*60 + endTimeParts[1]*60 + endTimeParts[2])
+	durationSeconds := endTimeSeconds - startTimeSeconds
 
-	return
+	return strconv.Itoa(startTimeSeconds), strconv.Itoa(durationSeconds), nil
 }
 
 func parseColonTimeString(timeString string) ([]int, error) {

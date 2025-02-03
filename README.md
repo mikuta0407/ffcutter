@@ -15,13 +15,14 @@ go install github.com/mikuta0407/ffcutter@latest
 ## Usage
 ```
 ffcutter -h
-  -a, --audio           audio only mode
-      --dryrun          dryrun mode (print command only)
-  -e, --end string      end time (h:mm:ss)
-  -h, --help            show help message
   -i, --input string    input file name
   -o, --output string   output file name
-  -s, --start string    start time (h:mm:ss)
+  -s, --start string    start time (1:23:45 or 1h23m45s)
+  -e, --end string      end time (1:23:45 or 1h23m45s)
+  -a, --audio           audio only mode
+      --dryrun          dryrun mode (print command only)
+  -h, --help            show help message
+
 ```
 
 Examples
@@ -32,5 +33,5 @@ ffcutter -i hoge.mp4 -o hoge-cut.mp4 -s 1:01:01 -e 2h02m02s
 
 
 ```bash
-ffcutter -i hoge.mp4 -o hoge-cut_audio.mp4 -s 1:01:01 -e 2h02m02s -a
+ffcutter -i hoge.mp4 -o hoge-cut_audio.mp4 -s 1:00:00 -e 2h02m02s -a
 ```

@@ -7,14 +7,14 @@ import (
 	"strings"
 )
 
-func execFFmpegCommand(inputFileName, outputFilename, startSec, endSec string, isAudio, isDryrun bool) error {
+func execFFmpegCommand(inputFileName, outputFilename, startSec, duration string, isAudio, isDryrun bool) error {
 	commandsOptions := []string{
 		"-ss",
 		startSec,
 		"-i",
 		inputFileName,
 		"-t",
-		endSec,
+		duration,
 		"-c",
 		"copy",
 	}
